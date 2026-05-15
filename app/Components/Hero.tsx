@@ -6,8 +6,8 @@ import { SITE } from "../lib/data/site";
 
 const ROLES = [
     "Full Stack Developer",
-    "Freelancer",
-    "Frontend Developer",
+    "Frontend Engineer",
+    "Problem Solver",
     "CMS Developer",
 ];
 
@@ -104,10 +104,14 @@ export default function Hero() {
 
                         {/* Bio */}
                         <p className="animate-fade-in-up delay-400 text-gray-300 text-lg leading-relaxed max-w-xl">
-                            I craft fast, content-driven web apps with{" "}
-                            <strong style={{ color: "var(--purple)" }}>React, Next.js, and TypeScript</strong>
-                            {" "}— with hands-on experience in{" "}
-                            <strong style={{ color: "var(--purple)" }}>headless CMS</strong>.
+                            Frontend Engineer with{" "}
+                            <strong style={{ color: "var(--purple)" }}>2+ years</strong>
+                            {" "}building{" "}
+                            <strong style={{ color: "var(--purple)" }}>scalable, high-performance</strong>
+                            {" "}web experiences using React, Next.js & TypeScript —
+                            specializing in{" "}
+                            <strong style={{ color: "var(--purple)" }}>headless CMS</strong>
+                            {" "}integrations and full-stack feature delivery.
                         </p>
 
                         {/* CTA buttons */}
