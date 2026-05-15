@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { SITE } from "../lib/data/site";
 
 const ROLES = [
     "Full Stack Developer",
@@ -87,7 +88,7 @@ export default function Hero() {
                                 style={{ color: "var(--foreground)" }}
                             >
                                 I&apos;M{" "}
-                                <span style={{ color: "var(--purple)" }}>HARSH TANDEL</span>
+                                <span style={{ color: "var(--purple)" }}>{SITE.name.toUpperCase()}</span>
                             </h1>
                         </div>
 
@@ -119,7 +120,7 @@ export default function Hero() {
                                 View My Work
                             </a>
                             <a
-                                href="https://drive.google.com/file/d/1LURUdtOutc0YUna0sTRn5rVs7CFv7Uf-/view"
+                                href={SITE.resumeUrl}
                                 target="_blank"
                                 rel="noreferrer"
                                 className="px-6 py-3 rounded-full font-semibold transition-all hover:scale-105"
@@ -135,7 +136,7 @@ export default function Hero() {
 
                         {/* Social icons */}
                         <div className="animate-fade-in-up delay-600 flex gap-4 pt-1">
-                            <SocialLink href="https://github.com/HARSHTANDEL25" label="GitHub">
+                            <SocialLink href={SITE.github} label="GitHub">
                                 <GitHubIcon />
                             </SocialLink>
                         </div>

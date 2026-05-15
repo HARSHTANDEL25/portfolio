@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { EXPERIENCE } from "../lib/data/experience";
 
 function anim(visible: boolean, delay = 0) {
     const dur = visible ? "0.65s" : "0.25s";
@@ -67,94 +68,57 @@ export default function Experience() {
                     />
 
                     <div className="pl-8 space-y-6 relative">
-
-                        {/* Entry 1 — Full-time */}
-                        <div className="relative">
-                            <div
-                                className="absolute left-0 top-5 -translate-x-[calc(2rem+1px)] w-3 h-3 rounded-full"
-                                style={{
-                                    background: "var(--purple)",
-                                    boxShadow: "0 0 8px rgba(59,130,246,0.6)",
-                                }}
-                            />
-                            <div
-                                className="p-6 rounded-2xl"
-                                style={{
-                                    border: "1px solid rgba(59,130,246,0.15)",
-                                    background: "rgba(59,130,246,0.04)",
-                                }}
-                            >
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                    <div>
-                                        <h3 className="text-white font-semibold text-lg">Software Engineer</h3>
-                                        <p className="text-sm mt-0.5" style={{ color: "var(--purple)" }}>Full-time</p>
-                                    </div>
-                                    <span
-                                        className="text-xs font-medium px-3 py-1.5 rounded-full w-fit"
+                        {EXPERIENCE.map((entry, i) => {
+                            const isActive = i === 0;
+                            return (
+                                <div key={entry.title + entry.period} className="relative">
+                                    <div
+                                        className="absolute left-0 top-5 -translate-x-[calc(2rem+1px)] w-3 h-3 rounded-full"
+                                        style={isActive
+                                            ? { background: "var(--purple)", boxShadow: "0 0 8px rgba(59,130,246,0.6)" }
+                                            : { background: "rgba(59,130,246,0.4)", border: "2px solid rgba(59,130,246,0.6)" }
+                                        }
+                                    />
+                                    <div
+                                        className="p-6 rounded-2xl"
                                         style={{
-                                            background: "rgba(59,130,246,0.1)",
-                                            border: "1px solid rgba(59,130,246,0.2)",
-                                            color: "var(--purple)",
+                                            border: "1px solid rgba(59,130,246,0.15)",
+                                            background: "rgba(59,130,246,0.04)",
                                         }}
                                     >
-                                        2025 – Present
-                                    </span>
-                                </div>
-                                <ul className="mt-4 space-y-2">
-                                    {[
-                                        "Building token-based multisite architecture for a pan-European student accommodation platform",
-                                        "Working with headless CMS to deliver flexible, content-driven experiences across multiple regions",
-                                        "Developing and maintaining multisite projects serving properties across the UK and Europe with localised content",
-                                        "Contributing to a property management system used for listing properties for students and residents",
-                                        "UI improvements for the resident-facing portal and mobile-first responsive layouts",
-                                    ].map((point) => (
-                                        <li key={point} className="flex items-start gap-2 text-sm text-gray-400">
-                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--purple)" }} />
-                                            {point}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-
-                        {/* Entry 2 — Internship */}
-                        <div className="relative">
-                            <div
-                                className="absolute left-0 top-5 -translate-x-[calc(2rem+1px)] w-3 h-3 rounded-full"
-                                style={{
-                                    background: "rgba(59,130,246,0.4)",
-                                    border: "2px solid rgba(59,130,246,0.6)",
-                                }}
-                            />
-                            <div
-                                className="p-6 rounded-2xl"
-                                style={{
-                                    border: "1px solid rgba(59,130,246,0.15)",
-                                    background: "rgba(59,130,246,0.04)",
-                                }}
-                            >
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                    <div>
-                                        <h3 className="text-white font-semibold text-lg">Frontend Developer Intern</h3>
-                                        <p className="text-sm mt-0.5" style={{ color: "var(--purple)" }}>Internship</p>
+                                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                                            <div>
+                                                <h3 className="text-white font-semibold text-lg">{entry.title}</h3>
+                                                <p className="text-sm mt-0.5" style={{ color: "var(--purple)" }}>{entry.type}</p>
+                                            </div>
+                                            <span
+                                                className="text-xs font-medium px-3 py-1.5 rounded-full w-fit"
+                                                style={{
+                                                    background: "rgba(59,130,246,0.1)",
+                                                    border: "1px solid rgba(59,130,246,0.2)",
+                                                    color: "var(--purple)",
+                                                }}
+                                            >
+                                                {entry.period}
+                                            </span>
+                                        </div>
+                                        {entry.bullets && (
+                                            <ul className="mt-4 space-y-2">
+                                                {entry.bullets.map((point) => (
+                                                    <li key={point} className="flex items-start gap-2 text-sm text-gray-400">
+                                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--purple)" }} />
+                                                        {point}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        {entry.description && (
+                                            <p className="mt-3 text-sm text-gray-400 leading-relaxed">{entry.description}</p>
+                                        )}
                                     </div>
-                                    <span
-                                        className="text-xs font-medium px-3 py-1.5 rounded-full w-fit"
-                                        style={{
-                                            background: "rgba(59,130,246,0.1)",
-                                            border: "1px solid rgba(59,130,246,0.2)",
-                                            color: "var(--purple)",
-                                        }}
-                                    >
-                                        2024
-                                    </span>
                                 </div>
-                                <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-                                    Developed a full-featured e-commerce web application using React, focusing on product listings, cart functionality, and a seamless checkout experience.
-                                </p>
-                            </div>
-                        </div>
-
+                            );
+                        })}
                     </div>
                 </div>
 

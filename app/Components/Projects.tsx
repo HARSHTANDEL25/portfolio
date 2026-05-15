@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { PROJECTS } from "../lib/data/projects";
 
 function anim(visible: boolean, delay = 0) {
     const dur = visible ? "0.65s" : "0.25s";
@@ -11,47 +12,6 @@ function anim(visible: boolean, delay = 0) {
         transition: `opacity ${dur} cubic-bezier(0.22,1,0.36,1) ${d}, transform ${dur} cubic-bezier(0.22,1,0.36,1) ${d}`,
     };
 }
-
-type Project = {
-    title: string;
-    description: string;
-    tags: string[];
-    github: string;
-    live?: string;
-};
-
-const PROJECTS: Project[] = [
-    {
-        title: "StockTracker",
-        description: "Real-time Indian stock market tracker with personal watchlist, IPO data, live market news, portfolio management, NSE API integration, Nifty/Sensex indices, crypto tracking, dark mode, and comprehensive stock fundamentals & financials.",
-        tags: ["Next.js", "JavaScript", "Tailwind CSS", "NSE API", "Vercel"],
-        github: "https://github.com/HARSHTANDEL25/stock-tracker",
-        live: "https://stocktracker-two.vercel.app/",
-    },
-    {
-        title: "EduVerse",
-        description: "Learning Management Platform where teachers create, edit and manage courses while students browse, enroll and track chapter progress. Features video processing via MUX, image uploads via UploadThing, rich text editor, Stripe payments, Clerk auth, and course analytics dashboard.",
-        tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "shadcn/ui", "Tailwind CSS", "Clerk", "Stripe", "MUX"],
-
-        github: "https://github.com/HARSHTANDEL25/learning-managment-plateform",
-
-    },
-    {
-        title: "Dream Palace",
-        description: "Comprehensive real estate platform with property listings, advanced search & filtering, Google Auth + JWT, Stripe payments, and full landlord/tenant management.",
-        tags: ["React", "Node.js", "Express.js", "MongoDB", "Firebase", "Redux", "Tailwind CSS", "Stripe"],
-
-        github: "https://github.com/HARSHTANDEL25/Dream-Place",
-
-    },
-    {
-        title: "Sneaker Hub",
-        description: " sneaker e-commerce store with Stripe payment gateway, real-time cart operations, and tailored product recommendations.",
-        tags: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT", "Stripe"],
-
-        github: "https://github.com/HARSHTANDEL25/Sneaker_Hub",
-    },
-];
 
 
 function GitHubIcon() {

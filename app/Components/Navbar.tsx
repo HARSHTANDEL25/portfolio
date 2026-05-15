@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const NAV_LINKS = [
-    { label: "Home",       href: "#home",       id: "home" },
-    { label: "About",      href: "#about",      id: "about" },
-    { label: "Experience", href: "#experience", id: "experience" },
-    { label: "Projects",   href: "#projects",   id: "projects" },
-    { label: "Contact",    href: "#contact",    id: "contact" },
-];
+import { NAV_LINKS, SITE } from "../lib/data/site";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -78,7 +71,7 @@ export default function Navbar() {
 
                 {/* Desktop CTA */}
                 <a
-                    href="https://drive.google.com/file/d/1LURUdtOutc0YUna0sTRn5rVs7CFv7Uf-/view"
+                    href={SITE.resumeUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="hidden md:inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105"
@@ -143,7 +136,7 @@ export default function Navbar() {
                         </a>
                     ))}
                     <a
-                        href="https://drive.google.com/file/d/1LURUdtOutc0YUna0sTRn5rVs7CFv7Uf-/view"
+                        href={SITE.resumeUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="text-sm font-medium w-fit px-4 py-2 rounded-full"

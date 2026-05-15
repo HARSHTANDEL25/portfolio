@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SiGithub } from "react-icons/si";
-import { MdEmail } from "react-icons/md";
+import { CONTACT_LINKS } from "../lib/data/contact";
 
 function anim(visible: boolean, delay = 0) {
     const dur = visible ? "0.65s" : "0.25s";
@@ -13,21 +12,6 @@ function anim(visible: boolean, delay = 0) {
         transition: `opacity ${dur} cubic-bezier(0.22,1,0.36,1) ${d}, transform ${dur} cubic-bezier(0.22,1,0.36,1) ${d}`,
     };
 }
-
-const CONTACT_LINKS = [
-    {
-        icon: MdEmail,
-        label: "Email",
-        value: "harshtandel2508@gmail.com",
-        href: "mailto:harshtandel2508@gmail.com",
-    },
-    {
-        icon: SiGithub,
-        label: "GitHub",
-        value: "github.com/HARSHTANDEL25",
-        href: "https://github.com/HARSHTANDEL25",
-    },
-];
 
 export default function Contact() {
     const sectionRef = useRef<HTMLElement>(null);
