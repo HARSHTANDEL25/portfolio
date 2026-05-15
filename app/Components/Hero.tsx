@@ -148,7 +148,7 @@ export default function Hero() {
                             style={{ border: "2px solid rgba(59,130,246,0.4)" }}
                         >
                             <Image
-                                src="/Avtar.png"
+                                src="/avtar.png"
                                 alt="Harsh Tandel — Developer Avatar"
                                 width={1000}
                                 height={1000}
