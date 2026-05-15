@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const ROLES = [
@@ -61,7 +62,7 @@ export default function Hero() {
                 <div className="flex flex-col md:flex-row items-center gap-16">
 
                     {/* Left — text content */}
-                    <div className="flex-1 space-y-7">
+                    <div className="flex-[6] space-y-7">
 
                         {/* Open to work badge */}
                         <div
@@ -137,24 +138,23 @@ export default function Hero() {
                             <SocialLink href="https://github.com/HARSHTANDEL25" label="GitHub">
                                 <GitHubIcon />
                             </SocialLink>
-<SocialLink href="https://twitter.com/HARSHTANDEL25" label="Twitter / X">
-                                <TwitterIcon />
-                            </SocialLink>
                         </div>
                     </div>
 
                     {/* Right — avatar (swap HT initials with <Image> once you have your photo) */}
-                    <div className="animate-fade-in delay-300 flex-shrink-0">
+                    <div className="animate-fade-in delay-300 flex-[4] flex justify-center">
                         <div
-                            className="animate-glow w-64 h-64 md:w-72 md:h-72 rounded-full flex items-center justify-center font-bold select-none"
-                            style={{
-                                background: "linear-gradient(135deg, rgba(59,130,246,0.2), rgba(29,78,216,0.1))",
-                                border: "2px solid rgba(59,130,246,0.4)",
-                                color: "var(--purple)",
-                                fontSize: "4rem",
-                            }}
+                            className="animate-glow w-full max-w-sm aspect-square rounded-full overflow-hidden select-none"
+                            style={{ border: "2px solid rgba(59,130,246,0.4)" }}
                         >
-                            HT
+                            <Image
+                                src="/avtar.png"
+                                alt="Harsh Tandel — Developer Avatar"
+                                width={1000}
+                                height={1000}
+                                className="w-full h-full object-cover scale-[1.08]"
+                                priority
+                            />
                         </div>
                     </div>
 
@@ -205,10 +205,3 @@ function GitHubIcon() {
     );
 }
 
-function TwitterIcon() {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.737-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-    );
-}
