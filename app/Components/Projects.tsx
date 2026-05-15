@@ -33,7 +33,7 @@ const PROJECTS: Project[] = [
         description: "Learning Management Platform where teachers create, edit and manage courses while students browse, enroll and track chapter progress. Features video processing via MUX, image uploads via UploadThing, rich text editor, Stripe payments, Clerk auth, and course analytics dashboard.",
         tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "shadcn/ui", "Tailwind CSS", "Clerk", "Stripe", "MUX"],
 
-        github: "https://github.com/HARSHTANDEL25",
+        github: "https://github.com/HARSHTANDEL25/learning-managment-plateform",
 
     },
     {
@@ -41,15 +41,15 @@ const PROJECTS: Project[] = [
         description: "Comprehensive real estate platform with property listings, advanced search & filtering, Google Auth + JWT, Stripe payments, and full landlord/tenant management.",
         tags: ["React", "Node.js", "Express.js", "MongoDB", "Firebase", "Redux", "Tailwind CSS", "Stripe"],
 
-        github: "https://github.com/HARSHTANDEL25",
+        github: "https://github.com/HARSHTANDEL25/Dream-Place",
 
     },
     {
         title: "Sneaker Hub",
-        description: "Dynamic sneaker e-commerce store with JWT authentication, Stripe payment gateway, real-time cart operations, and tailored product recommendations.",
+        description: " sneaker e-commerce store with Stripe payment gateway, real-time cart operations, and tailored product recommendations.",
         tags: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT", "Stripe"],
 
-        github: "https://github.com/HARSHTANDEL25",
+        github: "https://github.com/HARSHTANDEL25/Sneaker_Hub",
     },
 ];
 
