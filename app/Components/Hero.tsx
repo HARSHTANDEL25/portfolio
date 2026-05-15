@@ -142,14 +142,13 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Right — avatar (swap HT initials with <Image> once you have your photo) */}
                     <div className="animate-fade-in delay-300 flex-[4] flex justify-center">
                         <div
                             className="animate-glow w-full max-w-sm aspect-square rounded-full overflow-hidden select-none"
                             style={{ border: "2px solid rgba(59,130,246,0.4)" }}
                         >
                             <Image
-                                src="/avtar.png"
+                                src="/Avtar.png"
                                 alt="Harsh Tandel — Developer Avatar"
                                 width={1000}
                                 height={1000}
