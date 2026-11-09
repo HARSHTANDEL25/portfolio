@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NAV_LINKS, SITE } from "../lib/data/site";
+import { NAV_LINKS } from "../lib/data/site";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState("home");
+    const [open, setOpen] = useState(false);
+    const [active, setActive] = useState("home");
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener("scroll", onScroll);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
@@ -18,138 +19,69 @@ export default function Navbar() {
         const observers = NAV_LINKS.map(({ id }) => {
             const el = document.getElementById(id);
             if (!el) return null;
-            const observer = new IntersectionObserver(
-                ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-                { threshold: 0.4 }
+            const o = new IntersectionObserver(
+                ([e]) => {
+                    if (e.isIntersecting) setActive(id);
+                },
+                { rootMargin: "-40% 0px -55% 0px" }
             );
-            observer.observe(el);
-            return observer;
+            o.observe(el);
+            return o;
         });
         return () => observers.forEach((o) => o?.disconnect());
     }, []);
 
     return (
         <header
-            className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+            className="fixed inset-x-0 top-0 z-50 transition-colors"
             style={{
-                background: scrolled ? "rgba(9,9,11,0.85)" : "transparent",
-                backdropFilter: scrolled ? "blur(12px)" : "none",
-                borderBottom: scrolled ? "1px solid rgba(59,130,246,0.15)" : "1px solid transparent",
+                background: scrolled || open ? "rgba(14,14,17,0.88)" : "transparent",
+                backdropFilter: scrolled || open ? "blur(10px)" : "none",
+                borderBottom: `1px solid ${scrolled || open ? "var(--line)" : "transparent"}`,
             }}
         >
-            <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-
-                {/* Logo */}
-                <a
-                    href="#home"
-                    className="text-xl font-bold tracking-tight transition-opacity hover:opacity-80"
-                    style={{ color: "var(--purple)" }}
-                >
-                    HT
+            <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+                <a href="#home" className="mono text-sm text-ink">
+                    <span className="text-ember">&gt;</span> harsh<span className="text-muted">@agents</span>
                 </a>
 
-                {/* Desktop nav */}
-                <nav className="hidden md:flex items-center gap-8">
-                    {NAV_LINKS.map((link) => {
-                        const isActive = activeSection === link.id;
-                        return (
-                            <a
-                                key={link.href}
-                                href={link.href}
-                                className="group relative text-sm transition-colors duration-200"
-                                style={{ color: isActive ? "#ffffff" : "#9ca3af" }}
-                            >
-                                {link.label}
-                                <span
-                                    className={`absolute -bottom-0.5 left-0 h-px w-full origin-left transition-transform duration-300 ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
-                                    style={{ background: "var(--purple)" }}
-                                />
-                            </a>
-                        );
-                    })}
+                <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+                    {NAV_LINKS.map((l) => (
+                        <a
+                            key={l.id}
+                            href={l.href}
+                            className="mono text-[0.8rem] transition-colors"
+                            style={{ color: active === l.id ? "var(--ember)" : "var(--muted)" }}
+                        >
+                            {l.label}
+                        </a>
+                    ))}
                 </nav>
 
-                {/* Desktop CTA */}
-                <a
-                    href={SITE.resumeUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hidden md:inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105"
-                    style={{
-                        border: "1px solid rgba(59,130,246,0.5)",
-                        color: "var(--purple)",
-                        background: "rgba(59,130,246,0.05)",
-                    }}
-                >
-                    Resume
-                </a>
-
-                {/* Mobile hamburger */}
                 <button
-                    className="md:hidden relative w-6 h-5 p-0 flex flex-col justify-between"
-                    onClick={() => setMenuOpen((o) => !o)}
-                    aria-label="Toggle menu"
+                    className="mono text-sm text-muted md:hidden"
+                    aria-expanded={open}
+                    aria-controls="mobile-nav"
+                    onClick={() => setOpen((v) => !v)}
                 >
-                    <span
-                        className="block w-full h-0.5 transition-all duration-300 origin-center"
-                        style={{
-                            background: "var(--purple)",
-                            transform: menuOpen ? "translateY(9px) rotate(45deg)" : "none",
-                        }}
-                    />
-                    <span
-                        className="block w-full h-0.5 transition-all duration-300"
-                        style={{
-                            background: "var(--purple)",
-                            opacity: menuOpen ? 0 : 1,
-                            transform: menuOpen ? "scaleX(0)" : "scaleX(1)",
-                        }}
-                    />
-                    <span
-                        className="block w-full h-0.5 transition-all duration-300 origin-center"
-                        style={{
-                            background: "var(--purple)",
-                            transform: menuOpen ? "translateY(-9px) rotate(-45deg)" : "none",
-                        }}
-                    />
+                    {open ? "close" : "menu"}
                 </button>
             </div>
 
-            {/* Mobile menu dropdown */}
-            <div
-                className="md:hidden overflow-hidden transition-all duration-300"
-                style={{
-                    maxHeight: menuOpen ? "300px" : "0px",
-                    background: "rgba(9,9,11,0.95)",
-                    backdropFilter: "blur(12px)",
-                }}
-            >
-                <nav className="flex flex-col px-6 py-4 gap-4">
-                    {NAV_LINKS.map((link) => (
+            {open && (
+                <nav id="mobile-nav" className="border-t border-line px-6 py-3 md:hidden" aria-label="Mobile">
+                    {NAV_LINKS.map((l) => (
                         <a
-                            key={link.href}
-                            href={link.href}
-                            className="text-sm text-gray-400 hover:text-white transition-colors"
-                            onClick={() => setMenuOpen(false)}
+                            key={l.id}
+                            href={l.href}
+                            onClick={() => setOpen(false)}
+                            className="mono block py-2 text-sm text-muted"
                         >
-                            {link.label}
+                            go: {l.label}
                         </a>
                     ))}
-                    <a
-                        href={SITE.resumeUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-sm font-medium w-fit px-4 py-2 rounded-full"
-                        style={{
-                            border: "1px solid rgba(59,130,246,0.5)",
-                            color: "var(--purple)",
-                        }}
-                        onClick={() => setMenuOpen(false)}
-                    >
-                        Resume
-                    </a>
                 </nav>
-            </div>
+            )}
         </header>
     );
 }

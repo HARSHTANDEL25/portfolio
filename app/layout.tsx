@@ -13,9 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Harsh Tandel | Portfolio",
-  description: "Portfolio of Harsh Tandel",
-  keywords: ["Harsh", "Tandel", "Portfolio"],
+  title: "Harsh Tandel | Software Engineer - AI Agents & Claude Code Workflows",
+  description:
+    "Software engineer who builds AI agents, Claude Code workflows and RAG applications using TypeScript, Node.js and Next.js.",
+  keywords: [
+    "Harsh Tandel",
+    "AI engineer",
+    "Claude Code",
+    "AI agents",
+    "RAG",
+    "MCP",
+    "Next.js",
+    "TypeScript",
+    "SitecoreAI",
+  ],
 };
 
 export default function RootLayout({
