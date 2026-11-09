@@ -1,16 +1,27 @@
 export const SITE = {
     name: "Harsh Tandel",
-    role: "Full Stack Developer & Freelancer",
+    role: "Software Engineer - AI Agents & Claude Code Workflows",
+    tagline:
+        "I build agent workflows, RAG applications and the pipelines that take work from a design to a reviewed pull request.",
     email: "harshtandel2508@gmail.com",
     github: "https://github.com/HARSHTANDEL25",
-    resumeUrl: "https://drive.google.com/file/d/1LURUdtOutc0YUna0sTRn5rVs7CFv7Uf-/view",
-    bio: "Fullstack Developer with 2+ years building scalable, high-performance web experiences using React, Next.js, and TypeScript — specializing in headless CMS integrations and full-stack feature delivery.",
+    linkedin: "https://linkedin.com/in/Tandel Harsh",
+    resumeUrl: "/Harsh_Tandel_Resume.pdf",
+    location: "Vadodara, Gujarat, India",
 };
 
 export const NAV_LINKS = [
-    { label: "Home", href: "#home", id: "home" },
-    { label: "About", href: "#about", id: "about" },
-    { label: "Experience", href: "#experience", id: "experience" },
-    { label: "Projects", href: "#projects", id: "projects" },
-    { label: "Contact", href: "#contact", id: "contact" },
+    { label: "home", href: "#home", id: "home" },
+    { label: "systems", href: "#systems", id: "systems" },
+    { label: "workflow", href: "#workflow", id: "workflow" },
+    { label: "experience", href: "#experience", id: "experience" },
+    { label: "contact", href: "#contact", id: "contact" },
 ];
+
+export const STATUS = [
+    { step: "plan", state: "done", text: "SDLC moved into an AI-based pipeline" },
+    { step: "build", state: "running", text: "agents, MCP tools and RAG apps" },
+    { step: "ship", state: "done", text: "components on SitecoreAI" },
+];
+
+export const WORKFLOW = ["spec", "plan", "agents build", "gates", "human review", "ship"];

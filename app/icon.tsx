@@ -14,20 +14,11 @@ export default function Icon() {
                     alignItems: "center",
                     justifyContent: "center",
                     borderRadius: 6,
-                    border: "1.5px solid rgba(59, 130, 246, 0.6)",
+                    background: "#0e0e11",
+                    border: "1.5px solid #ff7a3d",
                 }}
             >
-                <span
-                    style={{
-                        color: "#3b82f6",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        letterSpacing: -0.5,
-                        fontFamily: "sans-serif",
-                    }}
-                >
-                    HT
-                </span>
+                <span style={{ color: "#ff7a3d", fontSize: 14, fontWeight: 700, fontFamily: "monospace" }}>&gt;_</span>
             </div>
         ),
         { ...size }

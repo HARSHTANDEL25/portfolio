@@ -1,127 +1,75 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { EXPERIENCE } from "../lib/data/experience";
-
-function anim(visible: boolean, delay = 0) {
-    const dur = visible ? "0.65s" : "0.25s";
-    const d = visible ? `${delay}s` : "0s";
-    return {
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0px)" : "translateY(22px)",
-        transition: `opacity ${dur} cubic-bezier(0.22,1,0.36,1) ${d}, transform ${dur} cubic-bezier(0.22,1,0.36,1) ${d}`,
-    };
-}
+import { CERTIFICATIONS, EXPERIENCE } from "../lib/data/experience";
+import { STACK } from "../lib/data/projects";
+import Reveal from "./Reveal";
 
 export default function Experience() {
-    const sectionRef = useRef<HTMLElement>(null);
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setVisible(entry.isIntersecting),
-            { threshold: 0.1 }
-        );
-        if (sectionRef.current) observer.observe(sectionRef.current);
-        return () => observer.disconnect();
-    }, []);
-
     return (
-        <section id="experience" ref={sectionRef} className="relative py-24 px-6 overflow-hidden">
+        <section id="experience" className="px-6 py-20">
+            <div className="mx-auto max-w-6xl">
+                <p className="eyebrow mb-2">{"//04 - experience"}</p>
+                <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Where I do it</h2>
 
-            {/* Background blob */}
-            <div className="pointer-events-none absolute inset-0 -z-10">
-                <div
-                    className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] rounded-full opacity-10 blur-3xl"
-                    style={{ background: "radial-gradient(circle, #3b82f6, transparent 70%)" }}
-                />
-            </div>
+                {EXPERIENCE.map((e) => (
+                    <Reveal key={e.company} className="mt-8">
+                        <div className="panel p-6 md:p-8">
+                            <div className="flex flex-wrap items-baseline justify-between gap-2">
+                                <h3 className="text-xl font-semibold">
+                                    {e.title} <span className="text-muted">at</span> {e.company}
+                                </h3>
+                                <span className="mono text-sm text-amber">{e.period}</span>
+                            </div>
+                            <p className="mono mt-1 text-xs text-muted">{e.place}</p>
+                            <ul className="mt-5 space-y-3">
+                                {e.bullets.map((b) => (
+                                    <li key={b} className="flex gap-3 text-sm leading-relaxed text-muted md:text-base">
+                                        <span className="mono mt-0.5 text-ember" aria-hidden>
+                                            &#9656;
+                                        </span>
+                                        <span>{b}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </Reveal>
+                ))}
 
-            <div className="max-w-6xl mx-auto">
-
-                {/* Heading */}
-                <div className="mb-12">
-                    <p className="text-sm font-medium mb-2" style={{ color: "var(--purple)", ...anim(visible, 0) }}>
-                        WHERE I&apos;VE WORKED
-                    </p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white" style={anim(visible, 0.08)}>
-                        Experience
-                    </h2>
-                    <div
-                        className="mt-4 h-px"
-                        style={{
-                            background: "var(--purple)",
-                            ...anim(visible, 0.15),
-                            width: visible ? "64px" : "0px",
-                            transition: `width 0.5s cubic-bezier(0.22,1,0.36,1) ${visible ? "0.15s" : "0s"}, opacity 0.3s ease ${visible ? "0.15s" : "0s"}`,
-                        }}
-                    />
-                </div>
-
-                {/* Timeline */}
-                <div className="relative max-w-2xl" style={anim(visible, 0.22)}>
-
-                    {/* Vertical line */}
-                    <div
-                        className="absolute left-0 top-0 bottom-0 w-px"
-                        style={{ background: "rgba(59,130,246,0.2)" }}
-                    />
-
-                    <div className="pl-8 space-y-6 relative">
-                        {EXPERIENCE.map((entry, i) => {
-                            const isActive = i === 0;
-                            return (
-                                <div key={entry.title + entry.period} className="relative">
-                                    <div
-                                        className="absolute left-0 top-5 -translate-x-[calc(2rem+1px)] w-3 h-3 rounded-full"
-                                        style={isActive
-                                            ? { background: "var(--purple)", boxShadow: "0 0 8px rgba(59,130,246,0.6)" }
-                                            : { background: "rgba(59,130,246,0.4)", border: "2px solid rgba(59,130,246,0.6)" }
-                                        }
-                                    />
-                                    <div
-                                        className="p-6 rounded-2xl"
-                                        style={{
-                                            border: "1px solid rgba(59,130,246,0.15)",
-                                            background: "rgba(59,130,246,0.04)",
-                                        }}
-                                    >
-                                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                            <div>
-                                                <h3 className="text-white font-semibold text-lg">{entry.title}</h3>
-                                                <p className="text-sm mt-0.5" style={{ color: "var(--purple)" }}>{entry.type}</p>
-                                            </div>
-                                            <span
-                                                className="text-xs font-medium px-3 py-1.5 rounded-full w-fit"
-                                                style={{
-                                                    background: "rgba(59,130,246,0.1)",
-                                                    border: "1px solid rgba(59,130,246,0.2)",
-                                                    color: "var(--purple)",
-                                                }}
-                                            >
-                                                {entry.period}
-                                            </span>
-                                        </div>
-                                        {entry.bullets && (
-                                            <ul className="mt-4 space-y-2">
-                                                {entry.bullets.map((point) => (
-                                                    <li key={point} className="flex items-start gap-2 text-sm text-gray-400">
-                                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--purple)" }} />
-                                                        {point}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                        {entry.description && (
-                                            <p className="mt-3 text-sm text-gray-400 leading-relaxed">{entry.description}</p>
-                                        )}
+                <div className="mt-10 grid gap-6 md:grid-cols-2">
+                    <Reveal>
+                        <div className="panel h-full p-6">
+                            <p className="eyebrow mb-4">stack</p>
+                            <dl className="space-y-4">
+                                {STACK.map((g) => (
+                                    <div key={g.category}>
+                                        <dt className="mono mb-2 text-xs text-muted">{g.category}</dt>
+                                        <dd className="flex flex-wrap gap-2">
+                                            {g.items.map((i) => (
+                                                <span key={i} className="tag text-ink">
+                                                    {i}
+                                                </span>
+                                            ))}
+                                        </dd>
                                     </div>
-                                </div>
-                            );
-                        })}
-                    </div>
+                                ))}
+                            </dl>
+                        </div>
+                    </Reveal>
+                    <Reveal delay={0.08}>
+                        <div className="panel h-full p-6">
+                            <p className="eyebrow mb-4">certifications</p>
+                            <ul className="space-y-3">
+                                {CERTIFICATIONS.map((c) => (
+                                    <li key={c} className="flex gap-3 text-sm md:text-base">
+                                        <span className="mono text-ok" aria-hidden>
+                                            &#10003;
+                                        </span>
+                                        {c}
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="mono mt-6 text-xs text-muted">education: B.Sc. Computer Science, A D Patel Institute of Technology (CGPA 8.20)</p>
+                        </div>
+                    </Reveal>
                 </div>
-
             </div>
         </section>
     );
