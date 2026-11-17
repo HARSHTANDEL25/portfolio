@@ -1,10 +1,10 @@
+import Approach from "./Components/Approach";
 import Contact from "./Components/Contact";
 import Experience from "./Components/Experience";
 import Footer from "./Components/Footer";
 import Hero from "./Components/Hero";
 import Navbar from "./Components/Navbar";
-import Systems from "./Components/Systems";
-import Workflow from "./Components/Workflow";
+import Work from "./Components/Work";
 
 export default function Home() {
     return (
@@ -12,8 +12,8 @@ export default function Home() {
             <Navbar />
             <main>
                 <Hero />
-                <Systems />
-                <Workflow />
+                <Work />
+                <Approach />
                 <Experience />
                 <Contact />
             </main>

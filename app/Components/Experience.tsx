@@ -1,4 +1,4 @@
-import { CERTIFICATIONS, EXPERIENCE } from "../lib/data/experience";
+import { CERTIFICATIONS, EDUCATION, EXPERIENCE } from "../lib/data/experience";
 import { STACK } from "../lib/data/projects";
 import Reveal from "./Reveal";
 
@@ -6,8 +6,8 @@ export default function Experience() {
     return (
         <section id="experience" className="px-6 py-20">
             <div className="mx-auto max-w-6xl">
-                <p className="eyebrow mb-2">{"//04 - experience"}</p>
-                <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Where I do it</h2>
+                <p className="eyebrow mb-2">experience</p>
+                <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Where I work</h2>
 
                 {EXPERIENCE.map((e) => (
                     <Reveal key={e.company} className="mt-8">
@@ -23,7 +23,7 @@ export default function Experience() {
                                 {e.bullets.map((b) => (
                                     <li key={b} className="flex gap-3 text-sm leading-relaxed text-muted md:text-base">
                                         <span className="mono mt-0.5 text-ember" aria-hidden>
-                                            &#9656;
+                                            &ndash;
                                         </span>
                                         <span>{b}</span>
                                     </li>
@@ -53,22 +53,31 @@ export default function Experience() {
                             </dl>
                         </div>
                     </Reveal>
-                    <Reveal delay={0.08}>
-                        <div className="panel h-full p-6">
-                            <p className="eyebrow mb-4">certifications</p>
-                            <ul className="space-y-3">
-                                {CERTIFICATIONS.map((c) => (
-                                    <li key={c} className="flex gap-3 text-sm md:text-base">
-                                        <span className="mono text-ok" aria-hidden>
-                                            &#10003;
-                                        </span>
-                                        {c}
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="mono mt-6 text-xs text-muted">education: B.Sc. Computer Science, A D Patel Institute of Technology (CGPA 8.20)</p>
-                        </div>
-                    </Reveal>
+                    <div className="flex flex-col gap-6">
+                        <Reveal delay={0.08}>
+                            <div className="panel p-6">
+                                <p className="eyebrow mb-4">education</p>
+                                <h3 className="font-semibold">{EDUCATION.degree}</h3>
+                                <p className="mt-1 text-sm text-muted">{EDUCATION.school}</p>
+                                <p className="mono mt-2 text-xs text-amber">{EDUCATION.detail}</p>
+                            </div>
+                        </Reveal>
+                        <Reveal delay={0.12} className="flex-1">
+                            <div className="panel h-full p-6">
+                                <p className="eyebrow mb-4">certifications</p>
+                                <ul className="space-y-3">
+                                    {CERTIFICATIONS.map((c) => (
+                                        <li key={c} className="flex gap-3 text-sm md:text-base">
+                                            <span className="mono text-ok" aria-hidden>
+                                                &#10003;
+                                            </span>
+                                            {c}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </Reveal>
+                    </div>
                 </div>
             </div>
         </section>

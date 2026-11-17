@@ -64,33 +64,83 @@ export const SYSTEMS: System[] = [
     },
 ];
 
-export const ALSO_BUILT = [
+export type ProjectKind = "AI tooling" | "Web apps";
+
+export type Project = {
+    title: string;
+    kind: ProjectKind;
+    text: string;
+    tags: string[];
+    github: string;
+    live?: string;
+};
+
+export const PROJECTS: Project[] = [
+    {
+        title: "component-kit",
+        kind: "AI tooling",
+        text: "Claude Code plugin that builds UI components from a Figma link. A script extracts the design into a committed spec, a gate refuses out-of-scope props, and generation is held to the project's own tokens.",
+        tags: ["Claude Code plugin", "Figma REST API", "JavaScript"],
+        github: "https://github.com/HARSHTANDEL25/component-kit",
+    },
+    {
+        title: "ai-starter-kit",
+        kind: "AI tooling",
+        text: "Personal Claude Code kit for front-end work: design and reasoning skills, plus an installable pipeline that pulls values from Figma and asserts the rendered DOM against them with Playwright.",
+        tags: ["Claude Code skills", "Playwright", "Node.js"],
+        github: "https://github.com/HARSHTANDEL25/ai-starter-kit",
+    },
+    {
+        title: "Figma Generator",
+        kind: "AI tooling",
+        text: "Generates UI mockups from a text prompt. Built to learn how to wire OpenRouter models into a Next.js app, with Clerk sign-in and Drizzle on Neon Postgres.",
+        tags: ["Next.js", "OpenRouter", "Drizzle", "Clerk"],
+        github: "https://github.com/HARSHTANDEL25/Figma_generator",
+    },
     {
         title: "KickOff",
-        text: "Football platform with live scores, standings, squads, H2H records and knockout brackets for the top European leagues.",
+        kind: "Web apps",
+        text: "Football platform with live scores, standings, squads, head-to-head records and knockout brackets for the top European leagues.",
+        tags: ["Next.js", "TypeScript"],
         github: "https://github.com/HARSHTANDEL25/Kickoff",
         live: "https://kickoff-one.vercel.app/",
     },
     {
         title: "StockTracker",
-        text: "Real-time Indian stock market tracker with watchlist, IPO data, market news and NSE API integration.",
+        kind: "Web apps",
+        text: "Real-time Indian stock market tracker with a watchlist, IPO data, market news and NSE API integration.",
+        tags: ["Next.js", "JavaScript", "NSE API"],
         github: "https://github.com/HARSHTANDEL25/stock-tracker",
         live: "https://stocktracker-two.vercel.app/",
+    },
+    {
+        title: "Learning Management Platform",
+        kind: "Web apps",
+        text: "Course platform with teacher and student modes: course and chapter authoring with drag-and-drop ordering, Stripe checkout, Mux video, progress tracking and sales analytics.",
+        tags: ["Next.js", "Prisma", "Stripe", "Mux", "Clerk"],
+        github: "https://github.com/HARSHTANDEL25/learning-managment-plateform",
+    },
+    {
+        title: "MY_CMS",
+        kind: "Web apps",
+        text: "Prototype content management system: authenticated authoring with a rich text and markdown editor, backed by Prisma.",
+        tags: ["Next.js", "NextAuth", "Prisma"],
+        github: "https://github.com/HARSHTANDEL25/MY_CMS",
     },
 ];
 
 export const ORCHESTRATOR_FLOW: Flow = {
     title: "orchestrator",
     nodes: [
-        [{ title: "Figma design", sub: "library + page designs", tone: "plain" }],
-        [{ title: "Orchestrator", sub: "reads the knowledge base first", tone: "hub" }],
+        [{ title: "Task", sub: "ticket, brief or design", tone: "plain" }],
+        [{ title: "Orchestrator", sub: "plans, routes, tracks state", tone: "hub" }],
         [
-            { title: "BED agent", sub: "model + Sitecore items", tone: "agent" },
-            { title: "FED agent", sub: "Next.js component", tone: "agent" },
+            { title: "Planner agent", sub: "breaks the work down", tone: "agent" },
+            { title: "Coder agent", sub: "implements on a branch", tone: "agent" },
+            { title: "QA agent", sub: "tests and checks", tone: "agent" },
         ],
-        [{ title: "QA agent", sub: "fidelity, a11y, Playwright", tone: "agent" }],
-        [{ title: "You approve", sub: "model, write, sign-off", tone: "human" }],
-        [{ title: "PR-ready", sub: "component, Pages-editable", tone: "plain" }],
+        [{ title: "Human review", sub: "approve or send back", tone: "human" }],
+        [{ title: "Shipped", sub: "merged pull request", tone: "plain" }],
     ],
 };
 

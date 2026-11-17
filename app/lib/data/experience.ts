@@ -29,3 +29,9 @@ export const CERTIFICATIONS = [
     "Claude Code in Action",
     "Introduction to Agent Skills",
 ];
+
+export const EDUCATION = {
+    degree: "Bachelor of Engineering (B.E.) in Computer Engineering",
+    school: "A D Patel Institute of Technology",
+    detail: "CGPA 8.20",
+};

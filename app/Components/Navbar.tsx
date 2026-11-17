@@ -42,7 +42,7 @@ export default function Navbar() {
         >
             <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
                 <a href="#home" className="mono text-sm text-ink">
-                    <span className="text-ember">&gt;</span> harsh<span className="text-muted">@agents</span>
+                    <span className="text-ember">ht</span> <span className="text-muted">/</span> harsh tandel
                 </a>
 
                 <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
@@ -77,7 +77,7 @@ export default function Navbar() {
                             onClick={() => setOpen(false)}
                             className="mono block py-2 text-sm text-muted"
                         >
-                            go: {l.label}
+                            {l.label}
                         </a>
                     ))}
                 </nav>

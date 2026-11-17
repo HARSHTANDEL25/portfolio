@@ -105,6 +105,39 @@ body {
   border-color: var(--amber);
 }
 
+.chip {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.chip:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+
+.chip-on,
+.chip-on:hover {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: #0e0e11;
+  font-weight: 600;
+}
+
+.card {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 122, 61, 0.55);
+  transform: translateY(-2px);
+}
+
 /* ---- scroll reveal ---- */
 .reveal {
   opacity: 0;
@@ -144,6 +177,16 @@ body {
   flex-direction: column;
   gap: 10px;
   flex: 1;
+}
+
+@media (min-width: 640px) {
+  .flow-v .flow-group {
+    flex-direction: row;
+  }
+
+  .flow-v .flow-group .node {
+    flex: 1;
+  }
 }
 
 .node {
@@ -254,4 +297,6 @@ body {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .link::after, .blink, .spin { animation: none; }
+  .card { transition: none; }
+  .card:hover { transform: none; }
 }

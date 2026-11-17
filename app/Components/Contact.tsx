@@ -42,11 +42,11 @@ export default function Contact() {
         <section id="contact" className="px-6 py-20">
             <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
                 <Reveal>
-                    <p className="eyebrow mb-2">{"//05 - contact"}</p>
-                    <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Building with agents?</h2>
+                    <p className="eyebrow mb-2">contact</p>
+                    <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Get in touch</h2>
                     <p className="mt-4 max-w-md leading-relaxed text-muted">
-                        Glad to talk agent workflows, Claude Code setups, RAG apps and SitecoreAI delivery - a hard
-                        problem, or just comparing notes.
+                        If you are setting up agent workflows, a RAG app or a SitecoreAI build and want a second
+                        pair of eyes, send me a note. I usually reply within a day or two.
                     </p>
                     <div className="mono mt-6 space-y-2 text-sm">
                         <p>

@@ -12,16 +12,29 @@ export const SITE = {
 
 export const NAV_LINKS = [
     { label: "home", href: "#home", id: "home" },
-    { label: "systems", href: "#systems", id: "systems" },
-    { label: "workflow", href: "#workflow", id: "workflow" },
+    { label: "work", href: "#work", id: "work" },
+    { label: "approach", href: "#approach", id: "approach" },
     { label: "experience", href: "#experience", id: "experience" },
     { label: "contact", href: "#contact", id: "contact" },
 ];
 
-export const STATUS = [
-    { step: "plan", state: "done", text: "SDLC moved into an AI-based pipeline" },
-    { step: "build", state: "running", text: "agents, MCP tools and RAG apps" },
-    { step: "ship", state: "done", text: "components on SitecoreAI" },
-];
+export const FOCUS = ["AI agents", "Claude Code workflows", "RAG applications", "Next.js + SitecoreAI"];
 
-export const WORKFLOW = ["spec", "plan", "agents build", "gates", "human review", "ship"];
+export const PRINCIPLES = [
+    {
+        title: "Brief before build",
+        text: "Every piece of work starts as a written brief: what is being built, what done looks like and what is out of scope. Agents and people read the same page.",
+    },
+    {
+        title: "Agents take the repeatable work",
+        text: "Extraction, scaffolding, content modelling and first-pass QA go to specialist agents. Each one reads the project knowledge base before it acts.",
+    },
+    {
+        title: "Checks are scripts, not opinions",
+        text: "Type checks, tests, accessibility and design-fidelity comparisons run as deterministic gates. A failing gate stops the run.",
+    },
+    {
+        title: "A person signs off",
+        text: "Nothing merges on an agent's word. I review the model, the write and the final pull request, and what I correct goes back into the knowledge base.",
+    },
+];
